@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class InputReader : MonoBehaviour
 {
-    public event Action OnToggleCounter;
+    public event Action ToggleCounter;
     private void Update()
     {
         if (Input.GetMouseButtonDown((int)MouseButton.Left))
-            OnToggleCounter?.Invoke();
+            ToggleCounter?.Invoke();
     }
 }

@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class Counter : MonoBehaviour
 {
-    public event Action<int> OnCounterUpdate;
-
     private int _currentCount = 0;
     private bool _isCounting = false;
     private Coroutine _countingCoroutine;
+    private WaitForSeconds _halfSecond;
+    private InputReader _inputReader;
+
+    public event Action<int> OnCounterUpdate;
+
+    private void Awake()
+    {
+        _halfSecond = new WaitForSeconds(0.5f);
+    }
 
     public void Initialize(InputReader inputReader)
     {
-        inputReader.OnToggleCounter += ToggleCounting;
+        inputReader.ToggleCounter += ToggleCounting;
+    }
+
+    private void OnDestroy()
+    {
+        if (_inputReader != null)
+        {
+            _inputReader.ToggleCounter -= ToggleCounting;
+        }
+
+        if (_countingCoroutine != null)
+        {
+            StopCoroutine(_countingCoroutine);
+        }
     }
 
     private void ToggleCounting()
@@ -37,7 +57,7 @@ public class Counter : MonoBehaviour
     {
         while (_isCounting) 
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return _halfSecond;
             _currentCount++;
             OnCounterUpdate?.Invoke(_currentCount);
             Debug.Log($"Таймер: {_currentCount}");
