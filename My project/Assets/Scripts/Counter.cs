@@ -10,7 +10,7 @@ public class Counter : MonoBehaviour
     private WaitForSeconds _halfSecond;
     private InputReader _inputReader;
 
-    public event Action<int> OnCounterUpdate;
+    public event Action<int> CounterUpdate;
 
     private void Awake()
     {
@@ -59,8 +59,7 @@ public class Counter : MonoBehaviour
         {
             yield return _halfSecond;
             _currentCount++;
-            OnCounterUpdate?.Invoke(_currentCount);
-            Debug.Log($"Таймер: {_currentCount}");
+            CounterUpdate?.Invoke(_currentCount);
         }
     }
 }
