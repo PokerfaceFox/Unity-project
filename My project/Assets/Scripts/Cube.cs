@@ -1,21 +1,41 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody), typeof(Renderer))]
 public class Cube : MonoBehaviour
 {
-    public event Action<Cube> OnClicked;
+    [SerializeField] private Renderer _renderer;
+    private Rigidbody _rigidbody;
 
-    public Vector3 Position => transform.position;
-    public Vector3 Scale => transform.localScale;
-    public Rigidbody Rigidbody => GetComponent<Rigidbody>();
+    public float SplitChance { get; set; } = 1f;
+    public Rigidbody PhysicsBody => _rigidbody;
+    public Vector3 Center => transform.position;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        if (_renderer == null)
+            _renderer = GetComponent<Renderer>();
+    }
 
     private void OnMouseDown()
     {
-        OnClicked?.Invoke(this);
+        Clicked();
     }
 
-    public void DestroyCube()
+    public void ApplyVisuals(Color color, Vector3 scale)
     {
-        Destroy(gameObject);
+        transform.localScale = scale;
+
+        Material newMaterial = new Material(Shader.Find("Standard"));
+        newMaterial.color = color;
+        _renderer.material = newMaterial;
     }
+
+    public void Clicked()
+    {
+        Clicking?.Invoke(this);
+    }
+
+    public event Action<Cube> Clicking;
 }

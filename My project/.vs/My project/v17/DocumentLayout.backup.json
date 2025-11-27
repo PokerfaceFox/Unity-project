@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "D:\\Git-test\\Unity-project\\My project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|D:\\Git-test\\Unity-project\\My project\\assets\\scripts\\cubespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cubespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|d:\\git-test\\unity-project\\my project\\assets\\scripts\\cubesplitcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cubesplitcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|d:\\git-test\\unity-project\\my project\\assets\\scripts\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|d:\\git-test\\unity-project\\my project\\assets\\scripts\\cubeexploder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cubeexploder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|D:\\Git-test\\Unity-project\\My project\\assets\\scripts\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|D:\\Git-test\\Unity-project\\My project\\assets\\scripts\\cubemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cubemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|D:\\Git-test\\Unity-project\\My project\\assets\\scripts\\cubefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cubefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +26,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CubeManager.cs",
-              "DocumentMoniker": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CubeManager.cs",
-              "ToolTip": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CubeManager.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAmwBsAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T10:20:57.613Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CubeSpawner.cs",
-              "DocumentMoniker": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeSpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CubeSpawner.cs",
-              "ToolTip": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeSpawner.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CubeSpawner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Title": "CubeSplitCalculator.cs",
+              "DocumentMoniker": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeSplitCalculator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CubeSplitCalculator.cs",
+              "ToolTip": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeSplitCalculator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CubeSplitCalculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T10:18:08.171Z",
+              "WhenOpened": "2025-11-27T19:25:21.449Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "CubeExploder.cs",
+              "DocumentMoniker": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeExploder.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CubeExploder.cs",
+              "ToolTip": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeExploder.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CubeExploder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T19:24:01.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CubeFactory.cs",
+              "DocumentMoniker": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeFactory.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CubeFactory.cs",
+              "ToolTip": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\CubeFactory.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CubeFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T19:17:17.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Cube.cs",
               "DocumentMoniker": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\Cube.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Cube.cs",
               "ToolTip": "D:\\Git-test\\Unity-project\\My project\\Assets\\Scripts\\Cube.cs",
               "RelativeToolTip": "Assets\\Scripts\\Cube.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T14:17:44.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-27T18:24:29.012Z"
             }
           ]
         }
