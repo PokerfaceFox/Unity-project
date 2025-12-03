@@ -15,7 +15,15 @@ public class ClickHandler : MonoBehaviour
             SplitCube(clickedCube);
         }
 
+        CreateExplosionFromCube(clickedCube);
         _factory.Remove(clickedCube);
+    }
+
+    private void CreateExplosionFromCube(Cube cube)
+    {
+        float cubeScale = cube.transform.localScale.x;
+
+        _exploder.CreateExplosion(cube.Center, cubeScale);
     }
 
     private void SplitCube(Cube originalCube)
@@ -37,8 +45,6 @@ public class ClickHandler : MonoBehaviour
             newCubes[i] = newCube;
             newCube.Clicking += OnCubeClicking;
         }
-
-        _exploder.ApplyToCubes(newCubes, originalCube.Center);
     }
 
     private void Start()

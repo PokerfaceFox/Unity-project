@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody), typeof(Renderer), typeof(ColorChanger))]
 public class Cube : MonoBehaviour
 {
     [SerializeField] private Renderer _renderer;
+    [SerializeField] private ColorChanger _colorChanger;
     private Rigidbody _rigidbody;
 
     public float SplitChance { get; set; } = 1f;
@@ -14,8 +15,12 @@ public class Cube : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+
         if (_renderer == null)
             _renderer = GetComponent<Renderer>();
+
+        if (_colorChanger == null)
+            _colorChanger = GetComponent<ColorChanger>();
     }
 
     private void OnMouseDown()
@@ -26,10 +31,7 @@ public class Cube : MonoBehaviour
     public void ApplyVisuals(Color color, Vector3 scale)
     {
         transform.localScale = scale;
-
-        Material newMaterial = new Material(Shader.Find("Standard"));
-        newMaterial.color = color;
-        _renderer.material = newMaterial;
+        _colorChanger.ApplyColor(color);
     }
 
     public void Clicked()
