@@ -361,6 +361,7 @@
 "Assets/Scripts/CubeLifeTimer.cs"
 "Assets/Scripts/CubePool.cs"
 "Assets/Scripts/CubeSpawner.cs"
+"Assets/Scripts/Platform.cs"
 -langversion:9.0
 
 /deterministic

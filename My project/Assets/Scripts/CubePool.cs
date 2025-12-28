@@ -44,8 +44,6 @@ public class CubePool : MonoBehaviour
         cube.gameObject.SetActive(true);
         cube.Initialize();
 
-        SubscribeToCubeEvents(cube);
-
         return cube;
     }
 
@@ -55,20 +53,5 @@ public class CubePool : MonoBehaviour
         cube.transform.SetParent(_poolContainer);
         cube.transform.localPosition = Vector3.zero;
         _pool.Enqueue(cube);
-    }
-
-    private void SubscribeToCubeEvents(Cube cube)
-    {
-        CubeLifeTimer lifeTimer = cube.GetComponent<CubeLifeTimer>();
-
-        if (lifeTimer != null)
-        {
-        }
-
-        ColorChanger colorChanger = cube.GetComponent<ColorChanger>();
-
-        if (colorChanger != null)
-        {
-        }
     }
 }

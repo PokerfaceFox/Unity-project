@@ -6,7 +6,7 @@ public class CubeCollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Platform") && _cube.HasTouchedPlatform == false)
+        if (collision.gameObject.TryGetComponent<Platform>(out _) && _cube.HasTouchedPlatform == false)
         {
             _cube.TouchPlatform();
         }

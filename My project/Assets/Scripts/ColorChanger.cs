@@ -6,7 +6,7 @@ public class ColorChanger : MonoBehaviour
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Color _initialColor = Color.blue;
     [SerializeField] private Color _touchColor = Color.green;
-    private const string STANDARD_SHADER_NAME = "Standard";
+    private const string StandardShaderName = "Standard";
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class ColorChanger : MonoBehaviour
 
     public void ApplyColor(Color color)
     {
-        Material newMaterial = new Material(Shader.Find(STANDARD_SHADER_NAME));
+        Material newMaterial = new Material(Shader.Find(StandardShaderName));
         newMaterial.color = color;
         _renderer.material = newMaterial;
     }

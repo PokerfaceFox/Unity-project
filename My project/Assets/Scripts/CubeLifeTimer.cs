@@ -9,10 +9,25 @@ public class CubeLifeTimer : MonoBehaviour
     private bool _isTimerRunning;
     private CubePool _pool;
 
-    private void Start()
+    private void OnEnable()
     {
-        _cube.PlatformTouched += OnPlatformTouched;
-        _pool = FindObjectOfType<CubePool>();
+        if (_cube != null)
+        {
+            _cube.PlatformTouched += OnPlatformTouched;
+        }
+
+        FindPoolIfNeeded();
+    }
+
+    private void OnDisable()
+    {
+        if (_cube != null)
+        {
+            _cube.PlatformTouched -= OnPlatformTouched;
+        }
+
+        _isTimerRunning = false;
+        _timeAfterTouch = 0f;
     }
 
     private void OnPlatformTouched(Cube cube)
@@ -33,10 +48,30 @@ public class CubeLifeTimer : MonoBehaviour
                 _isTimerRunning = false;
 
                 if (_pool != null)
+                {
                     _pool.ReturnCube(_cube);
+                }
                 else
-                    Destroy(gameObject);
+                {
+                    FindPoolIfNeeded();
+                    if (_pool != null)
+                    {
+                        _pool.ReturnCube(_cube);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                }
             }
+        }
+    }
+
+    private void FindPoolIfNeeded()
+    {
+        if (_pool == null)
+        {
+            _pool = FindObjectOfType<CubePool>();
         }
     }
 }
