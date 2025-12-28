@@ -41,8 +41,9 @@ public class CubePool : MonoBehaviour
         }
 
         Cube cube = _pool.Dequeue();
+
         cube.gameObject.SetActive(true);
-        cube.Initialize();
+        cube.Initialize(ReturnCube);
 
         return cube;
     }

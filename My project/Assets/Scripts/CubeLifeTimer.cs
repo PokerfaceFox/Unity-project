@@ -1,13 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class CubeLifeTimer : MonoBehaviour
 {
     [SerializeField] private Cube _cube;
 
-    private float _timeAfterTouch;
-    private float _maxLifeTime;
-    private bool _isTimerRunning;
-    private CubePool _pool;
+    private Coroutine _lifeCoroutine;
 
     private void OnEnable()
     {
@@ -15,8 +13,6 @@ public class CubeLifeTimer : MonoBehaviour
         {
             _cube.PlatformTouched += OnPlatformTouched;
         }
-
-        FindPoolIfNeeded();
     }
 
     private void OnDisable()
@@ -26,52 +22,25 @@ public class CubeLifeTimer : MonoBehaviour
             _cube.PlatformTouched -= OnPlatformTouched;
         }
 
-        _isTimerRunning = false;
-        _timeAfterTouch = 0f;
+        if (_lifeCoroutine != null)
+        {
+            StopCoroutine(_lifeCoroutine);
+            _lifeCoroutine = null;
+        }
     }
 
     private void OnPlatformTouched(Cube cube)
     {
-        _maxLifeTime = Random.Range(2f, 5f);
-        _timeAfterTouch = 0f;
-        _isTimerRunning = true;
+        float lifeTime = Random.Range(2f, 5f);
+        _lifeCoroutine = StartCoroutine(StartLifeCountdown(lifeTime));
     }
 
-    private void Update()
+    private IEnumerator StartLifeCountdown(float lifeTime)
     {
-        if (_isTimerRunning)
-        {
-            _timeAfterTouch += Time.deltaTime;
+        yield return new WaitForSeconds(lifeTime);
 
-            if (_timeAfterTouch >= _maxLifeTime)
-            {
-                _isTimerRunning = false;
+        _cube.NotifyLifeEnded();
 
-                if (_pool != null)
-                {
-                    _pool.ReturnCube(_cube);
-                }
-                else
-                {
-                    FindPoolIfNeeded();
-                    if (_pool != null)
-                    {
-                        _pool.ReturnCube(_cube);
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
-                }
-            }
-        }
-    }
-
-    private void FindPoolIfNeeded()
-    {
-        if (_pool == null)
-        {
-            _pool = FindObjectOfType<CubePool>();
-        }
+        _lifeCoroutine = null;
     }
 }
