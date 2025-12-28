@@ -2,35 +2,38 @@ using UnityEngine;
 
 public class ColorChanger : MonoBehaviour
 {
-    [SerializeField] private Cube _cube;
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Color _initialColor = Color.blue;
     [SerializeField] private Color _touchColor = Color.green;
     private const string StandardShaderName = "Standard";
 
-    private void Awake()
-    {
-        if (_renderer == null)
-            _renderer = GetComponent<Renderer>();
-    }
+    private Cube _cube;
 
-    private void Start()
+    private void OnEnable()
     {
-        _cube.PlatformTouched += OnPlatformTouched;
-        ApplyInitialColor();
-    }
+        _cube = GetComponent<Cube>();
+        if (_cube != null)
+        {
+            _cube.PlatformTouched += HandlePlatformTouch;
+        }
 
-    public void ApplyInitialColor()
-    {
         ApplyColor(_initialColor);
     }
 
-    private void OnPlatformTouched(Cube cube)
+    private void OnDisable()
+    {
+        if (_cube != null)
+        {
+            _cube.PlatformTouched -= HandlePlatformTouch;
+        }
+    }
+
+    private void HandlePlatformTouch()
     {
         ApplyColor(_touchColor);
     }
 
-    public void ApplyColor(Color color)
+    private void ApplyColor(Color color)
     {
         Material newMaterial = new Material(Shader.Find(StandardShaderName));
         newMaterial.color = color;

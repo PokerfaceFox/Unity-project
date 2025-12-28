@@ -3,15 +3,15 @@ using System.Collections;
 
 public class CubeLifeTimer : MonoBehaviour
 {
-    [SerializeField] private Cube _cube;
-
+    private Cube _cube;
     private Coroutine _lifeCoroutine;
 
     private void OnEnable()
     {
+        _cube = GetComponent<Cube>();
         if (_cube != null)
         {
-            _cube.PlatformTouched += OnPlatformTouched;
+            _cube.PlatformTouched += HandlePlatformTouch;
         }
     }
 
@@ -19,27 +19,29 @@ public class CubeLifeTimer : MonoBehaviour
     {
         if (_cube != null)
         {
-            _cube.PlatformTouched -= OnPlatformTouched;
+            _cube.PlatformTouched -= HandlePlatformTouch;
         }
 
         if (_lifeCoroutine != null)
         {
             StopCoroutine(_lifeCoroutine);
-            _lifeCoroutine = null;
         }
     }
 
-    private void OnPlatformTouched(Cube cube)
+    private void HandlePlatformTouch()
     {
         float lifeTime = Random.Range(2f, 5f);
-        _lifeCoroutine = StartCoroutine(StartLifeCountdown(lifeTime));
+        _lifeCoroutine = StartCoroutine(StartCountdown(lifeTime));
     }
 
-    private IEnumerator StartLifeCountdown(float lifeTime)
+    private IEnumerator StartCountdown(float lifeTime)
     {
         yield return new WaitForSeconds(lifeTime);
 
-        _cube.NotifyLifeEnded();
+        if (_cube != null)
+        {
+            _cube.NotifyLifeEnded();
+        }
 
         _lifeCoroutine = null;
     }

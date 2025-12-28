@@ -358,6 +358,7 @@
 "Assets/Scripts/ColorChanger.cs"
 "Assets/Scripts/Cube.cs"
 "Assets/Scripts/CubeCollisionHandler.cs"
+"Assets/Scripts/CubeCollisionMediator.cs"
 "Assets/Scripts/CubeLifeTimer.cs"
 "Assets/Scripts/CubePool.cs"
 "Assets/Scripts/CubeSpawner.cs"

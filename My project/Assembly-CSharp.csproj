@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\CubeLifeTimer.cs" />
     <Compile Include="Assets\Scripts\Cube.cs" />
     <Compile Include="Assets\Scripts\CubeSpawner.cs" />
+    <Compile Include="Assets\Scripts\CubeCollisionMediator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

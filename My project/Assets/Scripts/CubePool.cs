@@ -25,14 +25,6 @@ public class CubePool : MonoBehaviour
         }
     }
 
-    private void CreateNewCube()
-    {
-        Cube cube = Instantiate(_cubePrefab, _poolContainer);
-        cube.gameObject.SetActive(false);
-        cube.Initialize();
-        _pool.Enqueue(cube);
-    }
-
     public Cube GetCube()
     {
         if (_pool.Count == 0)
@@ -41,11 +33,17 @@ public class CubePool : MonoBehaviour
         }
 
         Cube cube = _pool.Dequeue();
-
         cube.gameObject.SetActive(true);
         cube.Initialize(ReturnCube);
-
         return cube;
+    }
+
+    private void CreateNewCube()
+    {
+        Cube cube = Instantiate(_cubePrefab, _poolContainer);
+        cube.gameObject.SetActive(false);
+        cube.Initialize(ReturnCube);
+        _pool.Enqueue(cube);
     }
 
     public void ReturnCube(Cube cube)

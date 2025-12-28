@@ -1,14 +1,15 @@
+using System;
 using UnityEngine;
 
 public class CubeCollisionHandler : MonoBehaviour
 {
-    [SerializeField] private Cube _cube;
+    public event Action PlatformCollisionOccurred;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<Platform>(out _) && _cube.HasTouchedPlatform == false)
+        if (collision.gameObject.TryGetComponent<Platform>(out _))
         {
-            _cube.TouchPlatform();
+            PlatformCollisionOccurred?.Invoke();
         }
     }
 }

@@ -3,28 +3,30 @@ using System;
 
 public class Cube : MonoBehaviour
 {
-    public bool HasTouchedPlatform { get; private set; }
-    public event Action<Cube> PlatformTouched;
+    public event Action PlatformTouched;
+    public event Action LifeEnded;
 
-    private Action<Cube> _onLifeEnded;
+    private Action<Cube> _returnToPoolCallback;
+    private bool _hasTouchedPlatform;
 
-    public void Initialize(Action<Cube> onLifeEnded = null)
+    public void Initialize(Action<Cube> returnCallback)
     {
-        HasTouchedPlatform = false;
-        _onLifeEnded = onLifeEnded;
+        _hasTouchedPlatform = false;
+        _returnToPoolCallback = returnCallback;
     }
 
-    public void TouchPlatform()
+    public void NotifyPlatformTouch()
     {
-        if (!HasTouchedPlatform)
+        if (!_hasTouchedPlatform)
         {
-            HasTouchedPlatform = true;
-            PlatformTouched?.Invoke(this);
+            _hasTouchedPlatform = true;
+            PlatformTouched?.Invoke();
         }
     }
 
     public void NotifyLifeEnded()
     {
-        _onLifeEnded?.Invoke(this);
+        LifeEnded?.Invoke();
+        _returnToPoolCallback?.Invoke(this);
     }
 }
