@@ -1,43 +1,23 @@
-using System;
 using UnityEngine;
+using System;
 
-[RequireComponent(typeof(Rigidbody), typeof(Renderer), typeof(ColorChanger))]
 public class Cube : MonoBehaviour
 {
-    [SerializeField] private Renderer _renderer;
-    [SerializeField] private ColorChanger _colorChanger;
-    private Rigidbody _rigidbody;
+    public bool HasTouchedPlatform { get; private set; }
 
-    public float SplitChance { get; set; } = 1f;
-    public Rigidbody PhysicsBody => _rigidbody;
-    public Vector3 Center => transform.position;
+    public event Action<Cube> PlatformTouched;
 
-    private void Awake()
+    public void Initialize()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-
-        if (_renderer == null)
-            _renderer = GetComponent<Renderer>();
-
-        if (_colorChanger == null)
-            _colorChanger = GetComponent<ColorChanger>();
+        HasTouchedPlatform = false;
     }
 
-    private void OnMouseDown()
+    public void TouchPlatform()
     {
-        Clicked();
+        if (HasTouchedPlatform == false)
+        {
+            HasTouchedPlatform = true;
+            PlatformTouched?.Invoke(this);
+        }
     }
-
-    public void ApplyVisuals(Color color, Vector3 scale)
-    {
-        transform.localScale = scale;
-        _colorChanger.ApplyColor(color);
-    }
-
-    public void Clicked()
-    {
-        Clicking?.Invoke(this);
-    }
-
-    public event Action<Cube> Clicking;
 }
