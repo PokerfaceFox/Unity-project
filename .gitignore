@@ -1,0 +1,35 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# MemoryCaptures
+[Mm]emoryCaptures/
+
+# Asset meta files should not be ignored
+# [Aa]ssets/**/*.meta
+
+# Unity3D generated file
+.collaboration/
+.packages/
+.projectsettings/
+*.asset
+*.prefab
+*.unity
+
+# Visual Studio
+.vs/
+*.sln
+*.csproj
+*.userprefs
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Package Cache
+**/PackageCache/
