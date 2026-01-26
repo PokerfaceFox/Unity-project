@@ -2,15 +2,48 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] private Vector2 _spawnDirection = Vector2.left;
+    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private Target _target;
+    [SerializeField] private float _spawnInterval = 2f;
 
-    public Vector2 Position => transform.position;
-    public Vector2 Direction => _spawnDirection;
+    private float _timer;
 
-    private void OnDrawGizmos()
+    private void Update()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 0.3f);
-        Gizmos.DrawRay(transform.position, _spawnDirection);
+        _timer += Time.deltaTime;
+
+        if (_timer >= _spawnInterval)
+        {
+            TrySpawnEnemy();
+            _timer = 0f;
+        }
+    }
+
+    private void TrySpawnEnemy()
+    {
+        if (_enemyPrefab == null)
+        {
+            Debug.LogWarning("Enemy prefab is not assigned!");
+            return;
+        }
+
+        if (_target == null)
+        {
+            Debug.LogWarning("Target is not assigned!");
+            return;
+        }
+
+        SpawnEnemy();
+    }
+
+    private void SpawnEnemy()
+    {
+        Vector3 spawnPosition = transform.position;
+        Enemy newEnemy = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity);
+
+        Vector2 targetPos = _target.transform.position;
+        Vector2 direction = (targetPos - (Vector2)spawnPosition).normalized;
+
+        newEnemy.Setup(spawnPosition, direction);
     }
 }
