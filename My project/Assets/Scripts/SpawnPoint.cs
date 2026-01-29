@@ -38,12 +38,19 @@ public class SpawnPoint : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Vector3 spawnPosition = transform.position;
-        Enemy newEnemy = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity);
+        Enemy newEnemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
+        newEnemy.SetTarget(_target);
+    }
 
-        Vector2 targetPos = _target.transform.position;
-        Vector2 direction = (targetPos - (Vector2)spawnPosition).normalized;
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, 0.2f);
 
-        newEnemy.Setup(spawnPosition, direction);
+        if (_target != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(transform.position, _target.transform.position);
+        }
     }
 }

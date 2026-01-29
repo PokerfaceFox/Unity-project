@@ -6,6 +6,7 @@ public class Target : MonoBehaviour
     [SerializeField] private List<Transform> _waypoints;
     [SerializeField] private float _moveSpeed = 2f;
 
+    private const float WaypointReachDistance = 0.05f;
     private int _currentIndex = 0;
 
     private void Start()
@@ -19,7 +20,17 @@ public class Target : MonoBehaviour
     private void Update()
     {
         if (_waypoints.Count == 0) return;
+        MoveAlongWaypoints();
+    }
 
+    private void OnDrawGizmos()
+    {
+        DrawMovementPath();
+        DrawCurrentPosition();
+    }
+
+    private void MoveAlongWaypoints()
+    {
         Transform currentWaypoint = _waypoints[_currentIndex];
         transform.position = Vector2.MoveTowards(
             transform.position,
@@ -27,14 +38,19 @@ public class Target : MonoBehaviour
             _moveSpeed * Time.deltaTime
         );
 
-        float distance = Vector2.Distance(transform.position, currentWaypoint.position);
-        if (distance < 0.05f)
+        CheckWaypointReached(currentWaypoint);
+    }
+
+    private void CheckWaypointReached(Transform waypoint)
+    {
+        float distance = Vector2.Distance(transform.position, waypoint.position);
+        if (distance < WaypointReachDistance)
         {
             _currentIndex = (_currentIndex + 1) % _waypoints.Count;
         }
     }
 
-    private void OnDrawGizmos()
+    private void DrawMovementPath()
     {
         if (_waypoints.Count > 1)
         {
@@ -52,8 +68,13 @@ public class Target : MonoBehaviour
                 Gizmos.DrawLine(_waypoints[^1].position, _waypoints[0].position);
             }
         }
+    }
 
+    private void DrawCurrentPosition()
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 0.2f);
     }
+
+    public Vector2 Position => transform.position;
 }
